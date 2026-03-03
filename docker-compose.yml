@@ -1,0 +1,14 @@
+services:
+  bot:
+    build: .
+    restart: unless-stopped
+    volumes:
+      - bot_data:/data
+    environment:
+      PRIVATE_KEY: ${PRIVATE_KEY}
+      ARB_RPC_URL: ${ARB_RPC_URL}
+      BASE_RPC_URL: ${BASE_RPC_URL}
+      STATE_FILE: /data/.bot-state.json
+
+volumes:
+  bot_data:
